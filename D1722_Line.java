@@ -48,12 +48,8 @@ public class D1722_Line {
                     result.append(value);
                 } else {
                     if (stackR.peek() > mid && queueL.peek() <= mid) {
-                        if (
-                                value - n + 1 + 2 * stackR.peek() > value + n - 1 - 2 * queueL.peek()
-                        )
-                            value = pop(stackR, value, n);
-                        else
-                            value = poll(queueL, value, n);
+                        value = value - n + 1 + 2 * stackR.peek() > value + n - 1 - 2 * queueL.peek() ?
+                                pop(stackR, value, n) : poll(queueL, value, n);
                     } else if (stackR.peek() > mid)
                         value = pop(stackR, value, n);
                     else if (queueL.peek() <= mid)
